@@ -186,7 +186,7 @@ pipeline {
             }
         }
         stage('Paso 13: Merge y Tag en Github') {
-            when { anyOf { branch 'release*' } }
+            when { anyOf { branch 'release/*' } }
             steps {
             withCredentials([
                 gitUsernamePassword(credentialsId: 'github-jenkins', gitToolName: 'Default')
@@ -235,7 +235,7 @@ pipeline {
             }
         }
         stage('Paso 14: Merge con develop en Github') {
-            when { anyOf { branch 'feature*' } }
+            when { branch 'feature/*' }
             steps {
             withCredentials([
                 gitUsernamePassword(credentialsId: 'github-jenkins', gitToolName: 'Default')
